@@ -1,30 +1,10 @@
-// Base data for seeding application
-// var paymentArray = [
-//   {
-//     month: 1,
-//     payment: 100,
-//     principal: 20,
-//     interest: 80,
-//     totalInterest: 80,
-//     balance: 1080,
-//   },
-//   {
-//     month: 2,
-//     payment: 100,
-//     principal: 20,
-//     interest: 80,
-//     totalInterest: 80,
-//     balance: 1080,
-//   },
-// ];
-
-function buildPaymentSchedule() {
+function buildPaymentSchedule(e) {
   let loan = +document.getElementById('loanAmount').value;
   let months = +document.getElementById('loanTerm').value * 12;
   let mthRate = (+document.getElementById('loanRate').value * 0.01) / 12;
 
   let payment = calculatePayment(loan, months, mthRate);
-  let paymentArray = getPayments(payment, months);
+  let paymentArray = getPayments(loan, payment, months, mthRate);
   displayData(paymentArray);
 }
 
@@ -37,18 +17,27 @@ function calculatePayment(loan, months, mthRate) {
 }
 
 // Get Payments (build payment array)
-function getPayments(payment, months) {
+function getPayments(loan, payment, months, mthRate) {
   let paymentArray = [];
+  let totalInterest = 0;
+  let balance = loan;
+  let interest = 0;
+  let principal = 0;
 
   for (let i = 1; i <= months; i++) {
     let obj = {};
 
+    interest = balance * mthRate;
+    principal = payment - interest;
+    totalInterest += interest;
+    balance -= principal;
+
     obj['month'] = i;
     obj['payment'] = payment;
-    obj['principal'] = 0;
-    obj['interest'] = 0;
-    obj['totalInterest'] = 0;
-    obj['balance'] = 0;
+    obj['principal'] = principal;
+    obj['interest'] = interest;
+    obj['totalInterest'] = totalInterest;
+    obj['balance'] = balance;
 
     paymentArray.push(obj);
   }
