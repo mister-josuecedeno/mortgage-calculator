@@ -90,165 +90,119 @@
     </header>
 
     <!-- Begin page content -->
-    <main role="main" class="container-fluid mt-5">
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="btn-group">
-            <button type="button" class="btn btn-secondary">
-              Pick a Location
-            </button>
-            <button
-              type="button"
-              class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
+    <main role="main">
+      <!-- Import Layout from index.html -->
+      <div class="container-fluid">
+        <div class="row mt-5 pt-5">
+          <!-- Loan Form -->
+          <div class="col-lg-5 col-md-6">
+            <div
+              class="section bg-dark text-white p-3 rounded shadow-sm bg-opacity"
+              style="height: 100%"
             >
-              <span class="sr-omly">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu" id="eventDropDown">
-              <!-- Template for dropdown -->
-            </div>
-          </div>
-
-          <table class="table table-striped">
-            <tr>
-              <th colspan="2" id="statsHeader">Stats for All Events</th>
-            </tr>
-            <tr>
-              <td>Total Attendance</td>
-              <td id="total">100</td>
-            </tr>
-            <tr>
-              <td>Average Attendance</td>
-              <td id="average">100</td>
-            </tr>
-            <tr>
-              <td>Most Attended</td>
-              <td id="most">100</td>
-            </tr>
-            <tr>
-              <td>Least Attended</td>
-              <td id="least">100</td>
-            </tr>
-          </table>
-        </div>
-        <div class="col-sm-6 order-first order-md-2">
-          <img
-            class="img-fluid p-2"
-            src="/img/SuperDogEventsWebLogosmall.png"
-            alt=""
-          />
-        </div>
-      </div>
-
-      <!-- EVENT DATA -->
-      <div class="row">
-        <div class="col">
-          <!-- ADD Data -->
-          <button
-            id="submitBtn"
-            type="button"
-            class="btn btn-secondary"
-            data-toggle="modal"
-            data-target="#addEvent"
-          >
-            Add Event
-          </button>
-          <hr />
-          <table class="table table-striped" id="event">
-            <thead class="thead-dark">
-              <tr>
-                <th>Event Name</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Attendance</th>
-                <th>Event Date</th>
-              </tr>
-            </thead>
-            <tbody id="resultsBody">
-              <!-- Data goes here -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="modal" id="addEvent">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <!-- Header -->
-            <div class="modal-header">
-              <h4 class="modal-title">Add a new event</h4>
-              <button type="button" class="close" data-dismiss="modal">
-                &times;
-              </button>
-            </div>
-
-            <!-- Body -->
-            <div class="modal-body">
-              <form action="" id="newEventForm">
-                <div class="form-group">
-                  <label for="newEvent">Event Name</label>
-                  <input
-                    type="text"
-                    name="newEvent"
-                    id="newEvent"
-                    class="form-control"
-                    placeholder="Event"
-                  />
+              <h3>Loan Details</h3>
+              <form>
+                <!-- Loan Amount -->
+                <div class="form-group row">
+                  <label for="loanAmount" class="col-sm-4 col-form-label"
+                    >Loan Amount</label
+                  >
+                  <div class="col-sm-8">
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="loanAmount"
+                      placeholder="Loan Amount"
+                    />
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label for="newCity">City</label>
-                  <input
-                    type="text"
-                    name="newCity"
-                    id="newCity"
-                    class="form-control"
-                    placeholder="City"
-                  />
+
+                <!-- Loan Term -->
+                <div class="form-group row">
+                  <label for="loanTerm" class="col-sm-4 col-form-label"
+                    >Loan Term (Years)</label
+                  >
+                  <div class="col-sm-8">
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="loanTerm"
+                      placeholder="Loan Term (Years)"
+                    />
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label for="newState">State</label>
-                  <input
-                    type="text"
-                    name="newState"
-                    id="newState"
-                    class="form-control"
-                    placeholder="State"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="newAttendance">Attendance</label>
-                  <input
-                    type="number"
-                    name="newAttendance"
-                    id="newAttendance"
-                    class="form-control"
-                    placeholder="Attendance"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="newDate">Event Date</label>
-                  <input
-                    type="date"
-                    name="newDate"
-                    id="newDate"
-                    class="form-control"
-                  />
+
+                <!-- Loan Rate (%) -->
+                <div class="form-group row">
+                  <label for="loanRate" class="col-sm-4 col-form-label"
+                    >Loan Rate (%)</label
+                  >
+                  <div class="col-sm-8">
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="loanRate"
+                      placeholder="Loan Rate (%)"
+                    />
+                  </div>
                 </div>
               </form>
             </div>
+          </div>
 
-            <!-- Footer -->
-            <div class="modal-footer">
-              <button
-                type="button"
-                onclick="saveEvent()"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Save
-              </button>
+          <!-- Loan Statistics -->
+          <div class="col-lg-7 col-md-6">
+            <div class="dropdown-menu" id="eventDropDown">
+              <!-- Template for dropdown -->
+            </div>
+            <div
+              class="section bg-dark text-white p-3 rounded shadow-sm bg-opacity"
+              style="height: 100%"
+            >
+              <h3>Your Monthly Payments</h3>
+              <table class="table table-striped bg-light">
+                <tr>
+                  <td>Monthly Payment</td>
+                  <td id="total">100</td>
+                </tr>
+                <tr>
+                  <td>Total Principal</td>
+                  <td id="average">100</td>
+                </tr>
+                <tr>
+                  <td>Total Interest</td>
+                  <td id="most">100</td>
+                </tr>
+                <tr>
+                  <td>Total Cost</td>
+                  <td id="least">100</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <!-- Amortization Schedule -->
+          <div class="col-lg-12 col-md-12">
+            <div
+              class="section bg-dark text-white p-3 rounded shadow-sm bg-opacity"
+            >
+              <h2>Amortization Schedule</h2>
+
+              <table class="table table-striped" id="event">
+                <thead class="thead-light">
+                  <tr>
+                    <th>Month</th>
+                    <th>Payment</th>
+                    <th>Principal</th>
+                    <th>Interest</th>
+                    <th>Total Interest</th>
+                    <th>Balance</th>
+                  </tr>
+                </thead>
+                <tbody id="resultsBody">
+                  <!-- Data goes here -->
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -264,11 +218,12 @@
     <!-- Template doesn't render on the body -->
     <template id="Data-Template">
       <tr>
-        <td id="event"></td>
-        <td id="city"></td>
-        <td id="state"></td>
-        <td id="attendance"></td>
-        <td id="date"></td>
+        <td id="month"></td>
+        <td id="payment"></td>
+        <td id="principal"></td>
+        <td id="interest"></td>
+        <td id="totalInterest"></td>
+        <td id="balance"></td>
       </tr>
     </template>
 
