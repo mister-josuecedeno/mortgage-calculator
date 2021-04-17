@@ -18,13 +18,20 @@ var paymentArray = [
   },
 ];
 
-displayData(paymentArray);
-
 function buildPaymentSchedule() {
-  // alert('connected!');
-  let loanAmount = +document.getElementById('loanAmount').value;
-  let loanTerm = +document.getElementById('loanTerm').value * 12;
-  let loanRate = +document.getElementById('loanRate').value / 100;
+  calculatePayment();
+  displayData(paymentArray);
+}
+
+// Calculate Payment
+// https://www.oreilly.com/library/view/javascript-the-definitive/0596000480/ch01s08.html
+function calculatePayment() {
+  let loan = +document.getElementById('loanAmount').value;
+  let months = +document.getElementById('loanTerm').value * 12;
+  let mthRate = (+document.getElementById('loanRate').value * 0.01) / 12;
+
+  let x = Math.pow(1 + mthRate, months);
+  return (loan * x * mthRate) / (x - 1);
 }
 
 // Display event data
