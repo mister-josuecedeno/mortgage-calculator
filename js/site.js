@@ -20,6 +20,13 @@ var paymentArray = [
 
 displayData(paymentArray);
 
+function buildPaymentSchedule() {
+  // alert('connected!');
+  let loanAmount = +document.getElementById('loanAmount').value;
+  let loanTerm = +document.getElementById('loanTerm').value * 12;
+  let loanRate = +document.getElementById('loanRate').value / 100;
+}
+
 // Display event data
 function displayData(paymentArray) {
   const myTemplate = document.getElementById('Data-Template');
