@@ -5,6 +5,7 @@ function buildPaymentSchedule(e) {
 
   let payment = calculatePayment(loan, months, mthRate);
   let paymentArray = getPayments(loan, payment, months, mthRate);
+  displayStats(payment, loan, paymentArray);
   displayData(paymentArray);
 }
 
@@ -43,6 +44,20 @@ function getPayments(loan, payment, months, mthRate) {
   }
 
   return paymentArray;
+}
+
+// Set Stats
+function displayStats(payment, loan, paymentArray) {
+  // Total Interest
+  let totalInterest = paymentArray.reduce((acc, cv) => acc + cv.interest, 0);
+  let totalCost = totalInterest + loan;
+
+  document.getElementById('payment').innerHTML = payment.toLocaleString();
+  document.getElementById('totalPrincipal').innerHTML = loan.toLocaleString();
+  document.getElementById(
+    'totalInterest'
+  ).innerHTML = totalInterest.toLocaleString();
+  document.getElementById('totalCost').innerHTML = totalCost.toLocaleString();
 }
 
 // Display event data
