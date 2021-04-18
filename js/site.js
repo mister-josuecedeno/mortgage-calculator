@@ -87,25 +87,46 @@ function displayData(paymentArray) {
   // clear table first
   resultsBody.innerHTML = '';
 
+  // Number format reference https://www.w3schools.com/jsref/jsref_tolocalestring_number.asp
   for (let i = 0; i < paymentArray.length; i++) {
     const dataRow = document.importNode(myTemplate.content, true);
 
     dataRow.getElementById('month').textContent = paymentArray[i].month;
     dataRow.getElementById('payment').textContent = paymentArray[
       i
-    ].payment.toLocaleString();
+    ].payment.toLocaleString('en-US', {
+      style: 'decimal',
+      minimumFractionDigits: '2',
+      maximumFractionDigits: '2',
+    });
     dataRow.getElementById('principal').textContent = paymentArray[
       i
-    ].principal.toLocaleString();
+    ].principal.toLocaleString('en-US', {
+      style: 'decimal',
+      minimumFractionDigits: '2',
+      maximumFractionDigits: '2',
+    });
     dataRow.getElementById('interest').textContent = paymentArray[
       i
-    ].interest.toLocaleString();
+    ].interest.toLocaleString('en-US', {
+      style: 'decimal',
+      minimumFractionDigits: '2',
+      maximumFractionDigits: '2',
+    });
     dataRow.getElementById('totalInterest').textContent = paymentArray[
       i
-    ].totalInterest.toLocaleString();
+    ].totalInterest.toLocaleString('en-US', {
+      style: 'decimal',
+      minimumFractionDigits: '2',
+      maximumFractionDigits: '2',
+    });
     dataRow.getElementById('balance').textContent = paymentArray[
       i
-    ].balance.toLocaleString();
+    ].balance.toLocaleString('en-US', {
+      style: 'decimal',
+      minimumFractionDigits: '2',
+      maximumFractionDigits: '2',
+    });
 
     resultsBody.appendChild(dataRow);
   }
