@@ -122,8 +122,8 @@
                 </section>
 
                 <!-- Collapsible Sections -->
-                <div class="accordion" id="accordionSuperDogCode">
-                  <!-- Event Statistics -->
+                <div class="accordion" id="accordionMortgageCalculator">
+                  <!-- Build Payment Schedul -->
                   <div class="card">
                     <div class="card-header" id="headingOne">
                       <h2 class="mb-0">
@@ -131,60 +131,60 @@
                           class="btn btn-link"
                           type="button"
                           data-toggle="collapse"
-                          data-target="#collapseEventStatistics"
+                          data-target="#collapseBuildPaymentSchedule"
                           aria-expanded="true"
-                          aria-controls="collapseEventStatistics"
+                          aria-controls="collapseBuildPaymentSchedule"
                         >
-                          Event Statistics
+                          Build Payment Schedule
                         </button>
                       </h2>
                     </div>
 
                     <div
-                      id="collapseEventStatistics"
+                      id="collapseBuildPaymentSchedule"
                       class="collapse show"
                       aria-labelledby="headingOne"
-                      data-parent="#accordionSuperDogCode"
+                      data-parent="#accordionMortgageCalculator"
                     >
                       <div class="card-body">
-                        <h5>Build Drop Down</h5>
+                        <h5>Build Payment Schedule</h5>
                         <p class="mb-3">
-                          The statistics section of the application initially
-                          leverages seed data, which is an array of objects.
-                          This data is stored in local storage at the initial
-                          load.
+                          This function is the trigger point of the application.
                         </p>
                         <p>
-                          <span class="badge badge-info">Line 4</span> Sets the
-                          curEvents variable to the locally stored array (or the
-                          base event array)
+                          <span class="badge badge-info">Lines 3 - 5</span>
+                          Return the required form data.
                         </p>
                         <p>
-                          <span class="badge badge-info">Line 6</span> Using Set
-                          the data is traversed with map to create a unique list
-                          of cities for the drop-down.
+                          <span class="badge badge-info">Line 7</span>
+                          Returns the mortgage payment using the provided form
+                          data.
+                        </p>
+                        <p>
+                          <span class="badge badge-info">Line 8</span>
+                          Returns the calculated array of payments based on the
+                          variables provided.
+                        </p>
+                        <p>
+                          <span class="badge badge-info">Lines 9 - 10</span>
+                          Call the functions which will display the data
+                          statistics and schedule.
                         </p>
 
                         <!-- Start Code -->
                         <pre
                           class="line-numbers"
-                        ><code class="language-javascript">// Build drop-down for filtering statistics by city
-function buildDropDown() {
-  var eventDD = document.getElementById('eventDropDown');
-  let curEvents = JSON.parse(localStorage.getItem('eventArray')) || eventArray;
+                        ><code class="language-javascript">// Build Payment Schedule
+function buildPaymentSchedule() {
+  let loan = +document.getElementById('loanAmount').value;
+  let months = +document.getElementById('loanTerm').value * 12;
+  let mthRate = (+document.getElementById('loanRate').value * 0.01) / 12;
 
-  let distinctEvents = [...new Set(curEvents.map((event) => event.city))];
-  let linkHTMLEnd =
-    '<div class="dropdown-divider"></div><a class="dropdown-item" onclick="getEvents(this)" data-string="All" >All</a>';
-  let resultsHTML = '';
-
-  for (let i = 0; i < distinctEvents.length; i++) {
-    resultsHTML += `<a class="dropdown-item" onclick="getEvents(this)" data-string="${distinctEvents[i]}">${distinctEvents[i]}</a>`;
-  }
-
-  resultsHTML += linkHTMLEnd;
-  eventDD.innerHTML = resultsHTML;
-  displayStats();
+  let payment = calculatePayment(loan, months, mthRate);
+  let paymentArray = getPayments(loan, payment, months, mthRate);
+  displayStats(payment, loan, paymentArray);
+  displayData(paymentArray);
+  return false;
 }
 </code></pre>
                         <!-- End Code -->
@@ -288,7 +288,7 @@ function displayStats() {
                       id="collapseEventData"
                       class="collapse"
                       aria-labelledby="headingTwo"
-                      data-parent="#accordionSuperDogCode"
+                      data-parent="#accordionMortgageCalculator"
                     >
                       <div class="card-body">
                         <h5>Get Data</h5>
@@ -364,7 +364,7 @@ function displayData(events) {
                       id="collapseAddEvent"
                       class="collapse"
                       aria-labelledby="headingTwo"
-                      data-parent="#accordionSuperDogCode"
+                      data-parent="#accordionMortgageCalculator"
                     >
                       <div class="card-body">
                         <h5>Save Data</h5>
