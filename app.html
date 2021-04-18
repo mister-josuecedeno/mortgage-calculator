@@ -112,7 +112,7 @@
                       type="number"
                       class="form-control"
                       id="loanAmount"
-                      placeholder="Loan Amount"
+                      placeholder="Loan Amount ($)"
                     />
                   </div>
                 </div>
@@ -120,14 +120,14 @@
                 <!-- Loan Term -->
                 <div class="form-group row">
                   <label for="loanTerm" class="col-sm-4 col-form-label"
-                    >Loan Term (Years)</label
+                    >Term (Years)</label
                   >
                   <div class="col-sm-8">
                     <input
                       type="number"
                       class="form-control"
                       id="loanTerm"
-                      placeholder="Loan Term (Years)"
+                      placeholder="Term (Years)"
                     />
                   </div>
                 </div>
@@ -135,24 +135,24 @@
                 <!-- Loan Rate (%) -->
                 <div class="form-group row">
                   <label for="loanRate" class="col-sm-4 col-form-label"
-                    >Loan Rate (%)</label
+                    >Interest Rate (%)</label
                   >
                   <div class="col-sm-8">
                     <input
                       type="number"
                       class="form-control"
                       id="loanRate"
-                      placeholder="Loan Rate (%)"
+                      placeholder="Interest Rate (%)"
                     />
                   </div>
                 </div>
 
                 <!-- Calculate Button -->
                 <button
-                  class="btn btn-warning"
+                  class="btn btn-success float-right mb-3 text-uppercase"
                   onclick="buildPaymentSchedule()"
                 >
-                  Calculate!
+                  Calculate
                 </button>
               </form>
             </div>
