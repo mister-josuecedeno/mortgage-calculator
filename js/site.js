@@ -53,12 +53,30 @@ function displayStats(payment, loan, paymentArray) {
   let totalInterest = paymentArray.reduce((acc, cv) => acc + cv.interest, 0);
   let totalCost = totalInterest + loan;
 
-  document.getElementById('payment').innerHTML = payment.toLocaleString();
-  document.getElementById('totalPrincipal').innerHTML = loan.toLocaleString();
+  document.getElementById('payment').innerHTML = payment.toLocaleString(
+    'en-US',
+    { style: 'currency', currency: 'USD' }
+  );
+  document.getElementById('totalPrincipal').innerHTML = loan.toLocaleString(
+    'en-US',
+    {
+      style: 'currency',
+      currency: 'USD',
+    }
+  );
   document.getElementById(
     'totalInterest'
-  ).innerHTML = totalInterest.toLocaleString();
-  document.getElementById('totalCost').innerHTML = totalCost.toLocaleString();
+  ).innerHTML = totalInterest.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  });
+  document.getElementById('totalCost').innerHTML = totalCost.toLocaleString(
+    'en-US',
+    {
+      style: 'currency',
+      currency: 'USD',
+    }
+  );
 }
 
 // Display event data

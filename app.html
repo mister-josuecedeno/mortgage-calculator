@@ -112,6 +112,7 @@
                   <div class="col-sm-8">
                     <input
                       type="number"
+                      min="0"
                       class="form-control"
                       id="loanAmount"
                       placeholder="Loan Amount ($)"
@@ -129,6 +130,7 @@
                   <div class="col-sm-8">
                     <input
                       type="number"
+                      min="0"
                       class="form-control"
                       id="loanTerm"
                       placeholder="Term (Years)"
@@ -145,7 +147,9 @@
                   >
                   <div class="col-sm-8">
                     <input
-                      type="text"
+                      type="number"
+                      min="0"
+                      step=".01"
                       class="form-control"
                       id="loanRate"
                       placeholder="Interest Rate (%)"
@@ -187,15 +191,15 @@
                 </tr> -->
                 <tr>
                   <td class="font-weight-bold">Total Principal</td>
-                  <td id="totalPrincipal">$0</td>
+                  <td id="totalPrincipal" class="text-right pr-5">$0</td>
                 </tr>
                 <tr>
                   <td class="font-weight-bold">Total Interest</td>
-                  <td id="totalInterest">$0</td>
+                  <td id="totalInterest" class="text-right pr-5">$0</td>
                 </tr>
                 <tr>
                   <td class="font-weight-bold">Total Cost</td>
-                  <td id="totalCost">$0</td>
+                  <td id="totalCost" class="text-right pr-5">$0</td>
                 </tr>
               </table>
             </div>
