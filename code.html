@@ -339,6 +339,84 @@ function getPayments(loan, payment, months, mthRate) {
                       data-parent="#accordionMortgageCalculator"
                     >
                       <div class="card-body">
+                        <h5>Display Stats</h5>
+                        <p class="mb-3">
+                          This function provides the view of the final array
+                          summary statistics. Note that key information for some
+                          fields has already been provided by the function
+                          arguments.
+                        </p>
+                        <p>
+                          <span class="badge badge-info">Lines 4 - 5</span>
+                          Calculate the total interest using the reduce function
+                          and total cost. All of the remaining fields have been
+                          provided in the function call.
+                        </p>
+
+                        <!-- Start Code -->
+                        <pre
+                          class="line-numbers"
+                        ><code class="language-javascript">// Set Stats
+function displayStats(payment, loan, paymentArray) {
+  // Total Interest
+  let totalInterest = paymentArray.reduce((acc, cv) => acc + cv.interest, 0);
+  let totalCost = totalInterest + loan;
+
+  document.getElementById('payment').innerHTML = payment.toLocaleString(
+    'en-US',
+    { style: 'currency', currency: 'USD' }
+  );
+  document.getElementById('totalPrincipal').innerHTML = loan.toLocaleString(
+    'en-US',
+    {
+      style: 'currency',
+      currency: 'USD',
+    }
+  );
+  document.getElementById(
+    'totalInterest'
+  ).innerHTML = totalInterest.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  });
+  document.getElementById('totalCost').innerHTML = totalCost.toLocaleString(
+    'en-US',
+    {
+      style: 'currency',
+      currency: 'USD',
+    }
+  );
+}
+                          
+</code></pre>
+                        <!-- End Code -->
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Display Data -->
+                  <div class="card">
+                    <div class="card-header" id="headingFive">
+                      <h2 class="mb-0">
+                        <button
+                          class="btn btn-link collapsed"
+                          type="button"
+                          data-toggle="collapse"
+                          data-target="#collapseDisplayStats"
+                          aria-expanded="false"
+                          aria-controls="collapseDisplayStats"
+                        >
+                          Display Stats
+                        </button>
+                      </h2>
+                    </div>
+                    <div
+                      id="collapseDisplayStats"
+                      class="collapse"
+                      aria-labelledby="headingFive"
+                      data-parent="#accordionMortgageCalculator"
+                    >
+                      <div class="card-body">
                         <h5>Get Payments</h5>
                         <p class="mb-3">
                           The objective of function is to return the
