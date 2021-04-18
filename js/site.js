@@ -7,6 +7,7 @@ function buildPaymentSchedule() {
   let paymentArray = getPayments(loan, payment, months, mthRate);
   displayStats(payment, loan, paymentArray);
   displayData(paymentArray);
+  return false;
 }
 
 // Calculate Payment
