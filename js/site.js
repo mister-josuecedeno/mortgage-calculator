@@ -1,4 +1,4 @@
-function buildPaymentSchedule(e) {
+function buildPaymentSchedule() {
   let loan = +document.getElementById('loanAmount').value;
   let months = +document.getElementById('loanTerm').value * 12;
   let mthRate = (+document.getElementById('loanRate').value * 0.01) / 12;
