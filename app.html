@@ -92,7 +92,7 @@
     <!-- Begin page content -->
     <main role="main">
       <!-- Import Layout from index.html -->
-      <div class="container-fluid">
+      <div class="container">
         <div class="row mt-5 pt-5">
           <!-- Loan Form -->
           <div class="col-lg-5 col-md-6">
@@ -100,14 +100,14 @@
               class="section bg-dark text-white p-3 rounded shadow-sm bg-opacity"
               style="height: 100%"
             >
-              <h3>Loan Details</h3>
+              <h3 class="mb-4">Loan Details</h3>
               <form>
                 <!-- Loan Amount -->
                 <div class="form-group row">
                   <label
                     for="loanAmount"
                     class="col-sm-4 col-form-label font-weight-bold"
-                    >Loan Amount ($)</label
+                    >Loan Amount</label
                   >
                   <div class="col-sm-8">
                     <input
@@ -143,7 +143,7 @@
                   <label
                     for="loanRate"
                     class="col-sm-4 col-form-label font-weight-bold"
-                    >Interest Rate (%)</label
+                    >Interest Rate</label
                   >
                   <div class="col-sm-8">
                     <input
@@ -177,7 +177,7 @@
               class="section bg-dark text-white p-3 rounded shadow-sm bg-opacity"
               style="height: 100%"
             >
-              <h3>Mortgage Statistics</h3>
+              <h3 class="mb-4">Mortgage Statistics</h3>
               <div class="border bg-white">
                 <h3 class="text-center mt-3 text-dark font-weight-bold">
                   Your Monthly Payments
@@ -215,7 +215,7 @@
             <div
               class="section bg-dark text-white p-3 rounded shadow-sm bg-opacity"
             >
-              <h2>Amortization Schedule</h2>
+              <h2 class="mb-4">Amortization Schedule</h2>
 
               <table
                 class="table table-striped table-responsive-sm bg-white"
@@ -224,10 +224,10 @@
                 <thead class="thead-light">
                   <tr>
                     <th>Month</th>
-                    <th>Payment</th>
+                    <th class="d-none d-md-block">Payment</th>
                     <th>Principal</th>
                     <th>Interest</th>
-                    <th>Total Interest</th>
+                    <th class="d-none d-md-block">Total Interest</th>
                     <th>Balance</th>
                   </tr>
                 </thead>
@@ -251,10 +251,10 @@
     <template id="Data-Template">
       <tr>
         <td id="month"></td>
-        <td id="payment"></td>
+        <td id="payment" class="d-none d-md-block"></td>
         <td id="principal"></td>
         <td id="interest"></td>
-        <td id="totalInterest"></td>
+        <td id="totalInterest" class="d-none d-md-block"></td>
         <td id="balance"></td>
       </tr>
     </template>
