@@ -238,69 +238,156 @@ function calculatePayment(loan, months, mthRate) {
                     </div>
                   </div>
 
-                  <!-- Adding New Events -->
+                  <!-- Get Payments -->
                   <div class="card">
-                    <div class="card-header" id="headingTwo">
+                    <div class="card-header" id="headingThree">
                       <h2 class="mb-0">
                         <button
                           class="btn btn-link collapsed"
                           type="button"
                           data-toggle="collapse"
-                          data-target="#collapseAddEvent"
+                          data-target="#collapseGetPayments"
                           aria-expanded="false"
-                          aria-controls="collapseAddEvent"
+                          aria-controls="collapseGetPayments"
                         >
-                          Adding New Events
+                          Get Payments
                         </button>
                       </h2>
                     </div>
                     <div
-                      id="collapseAddEvent"
+                      id="collapseGetPayments"
                       class="collapse"
-                      aria-labelledby="headingTwo"
+                      aria-labelledby="headingThree"
                       data-parent="#accordionMortgageCalculator"
                     >
                       <div class="card-body">
-                        <h5>Save Data</h5>
+                        <h5>Get Payments</h5>
                         <p class="mb-3">
-                          Using a modal, the user-provided data is captured,
-                          formatted and appended to the existing array as an
-                          object.
+                          The objective of function is to return the
+                          amortization data as an array.
                         </p>
                         <p>
-                          <span class="badge badge-info">Lines 4</span>
-                          References the stored data from local storage (or the
-                          base data).
+                          <span class="badge badge-info">Lines 9 - 25</span>
+                          A for loop is used to iteratively build the array by
+                          calculating a data object for each month.
                         </p>
                         <p>
-                          <span class="badge badge-info">Line 6 - 15</span>
-                          Populates the object from the modal and pushes to
-                          array, which is then saved to local storage..
+                          <span class="badge badge-info">Lines 12 - 15</span>
+                          Calculates those variables which change with each
+                          iteration.
+                        </p>
+                        <p>
+                          <span class="badge badge-info">Lines 17 - 22</span>
+                          Populate an object with the required fields. This
+                          object is then pushed to the array.
                         </p>
 
                         <!-- Start Code -->
                         <pre
                           class="line-numbers"
-                        ><code class="language-javascript">// Save user-provided data
-function saveEvent() {
-  // grab the events out of local storage
-  let events = JSON.parse(localStorage.getItem('eventArray')) || eventArray;
+                        ><code class="language-javascript">// Get Payments (build payment array)
+function getPayments(loan, payment, months, mthRate) {
+  let paymentArray = [];
+  let totalInterest = 0;
+  let balance = loan;
+  let interest = 0;
+  let principal = 0;
 
-  let obj = {};
-  obj['event'] = document.getElementById('newEvent').value;
-  obj['city'] = document.getElementById('newCity').value;
-  obj['state'] = document.getElementById('newState').value;
-  obj['attendance'] = +document.getElementById('newAttendance').value;
-  obj['date'] = formatDate(document.getElementById('newDate').value);
+  for (let i = 1; i <= months; i++) {
+    let obj = {};
 
-  events.push(obj);
+    interest = balance * mthRate;
+    principal = payment - interest;
+    totalInterest += interest;
+    balance -= principal;
 
-  localStorage.setItem('eventArray', JSON.stringify(events));
+    obj['month'] = i;
+    obj['payment'] = payment;
+    obj['principal'] = principal;
+    obj['interest'] = interest;
+    obj['totalInterest'] = totalInterest;
+    obj['balance'] = balance;
 
-  document.forms[0].reset();
-  buildDropDown();
-  displayData(events);
-}
+    paymentArray.push(obj);
+  }                          
+</code></pre>
+                        <!-- End Code -->
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Display Stats -->
+                  <div class="card">
+                    <div class="card-header" id="headingFour">
+                      <h2 class="mb-0">
+                        <button
+                          class="btn btn-link collapsed"
+                          type="button"
+                          data-toggle="collapse"
+                          data-target="#collapseDisplayStats"
+                          aria-expanded="false"
+                          aria-controls="collapseDisplayStats"
+                        >
+                          Display Stats
+                        </button>
+                      </h2>
+                    </div>
+                    <div
+                      id="collapseDisplayStats"
+                      class="collapse"
+                      aria-labelledby="headingFour"
+                      data-parent="#accordionMortgageCalculator"
+                    >
+                      <div class="card-body">
+                        <h5>Get Payments</h5>
+                        <p class="mb-3">
+                          The objective of function is to return the
+                          amortization data as an array.
+                        </p>
+                        <p>
+                          <span class="badge badge-info">Lines 9 - 25</span>
+                          A for loop is used to iteratively build the array by
+                          calculating a data object for each month.
+                        </p>
+                        <p>
+                          <span class="badge badge-info">Lines 12 - 15</span>
+                          Calculates those variables which change with each
+                          iteration.
+                        </p>
+                        <p>
+                          <span class="badge badge-info">Lines 17 - 22</span>
+                          Populate an object with the required fields. This
+                          object is then pushed to the array.
+                        </p>
+
+                        <!-- Start Code -->
+                        <pre
+                          class="line-numbers"
+                        ><code class="language-javascript">// Get Payments (build payment array)
+function getPayments(loan, payment, months, mthRate) {
+  let paymentArray = [];
+  let totalInterest = 0;
+  let balance = loan;
+  let interest = 0;
+  let principal = 0;
+
+  for (let i = 1; i <= months; i++) {
+    let obj = {};
+
+    interest = balance * mthRate;
+    principal = payment - interest;
+    totalInterest += interest;
+    balance -= principal;
+
+    obj['month'] = i;
+    obj['payment'] = payment;
+    obj['principal'] = principal;
+    obj['interest'] = interest;
+    obj['totalInterest'] = totalInterest;
+    obj['balance'] = balance;
+
+    paymentArray.push(obj);
+  }                          
 </code></pre>
                         <!-- End Code -->
                       </div>
