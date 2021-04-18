@@ -402,70 +402,92 @@ function displayStats(payment, loan, paymentArray) {
                           class="btn btn-link collapsed"
                           type="button"
                           data-toggle="collapse"
-                          data-target="#collapseDisplayStats"
+                          data-target="#collapseDisplayData"
                           aria-expanded="false"
-                          aria-controls="collapseDisplayStats"
+                          aria-controls="collapseDisplayData"
                         >
-                          Display Stats
+                          Display Data
                         </button>
                       </h2>
                     </div>
                     <div
-                      id="collapseDisplayStats"
+                      id="collapseDisplayData"
                       class="collapse"
                       aria-labelledby="headingFive"
                       data-parent="#accordionMortgageCalculator"
                     >
                       <div class="card-body">
-                        <h5>Get Payments</h5>
+                        <h5>Display Data</h5>
                         <p class="mb-3">
-                          The objective of function is to return the
-                          amortization data as an array.
+                          Templates are used to pull the data and dynamically
+                          populate the HTML. This technique is particularly
+                          powerful as it keeps the HTML out of the Javascript.
                         </p>
                         <p>
-                          <span class="badge badge-info">Lines 9 - 25</span>
-                          A for loop is used to iteratively build the array by
-                          calculating a data object for each month.
+                          <span class="badge badge-info">Lines 3 and 4</span>
+                          Identifies the template and the code destination.
                         </p>
                         <p>
-                          <span class="badge badge-info">Lines 12 - 15</span>
-                          Calculates those variables which change with each
-                          iteration.
-                        </p>
-                        <p>
-                          <span class="badge badge-info">Lines 17 - 22</span>
-                          Populate an object with the required fields. This
-                          object is then pushed to the array.
+                          <span class="badge badge-info">Line 10</span> In the
+                          for loop a copy of the template is populated with data
+                          then appended to the target destination.
                         </p>
 
                         <!-- Start Code -->
                         <pre
                           class="line-numbers"
-                        ><code class="language-javascript">// Get Payments (build payment array)
-function getPayments(loan, payment, months, mthRate) {
-  let paymentArray = [];
-  let totalInterest = 0;
-  let balance = loan;
-  let interest = 0;
-  let principal = 0;
+                        ><code class="language-javascript">// Display event data
+function displayData(paymentArray) {
+  const myTemplate = document.getElementById('Data-Template');
+  const resultsBody = document.getElementById('resultsBody');
 
-  for (let i = 1; i <= months; i++) {
-    let obj = {};
+  // clear table first
+  resultsBody.innerHTML = '';
 
-    interest = balance * mthRate;
-    principal = payment - interest;
-    totalInterest += interest;
-    balance -= principal;
+  // Number format reference https://www.w3schools.com/jsref/jsref_tolocalestring_number.asp
+  for (let i = 0; i < paymentArray.length; i++) {
+    const dataRow = document.importNode(myTemplate.content, true);
 
-    obj['month'] = i;
-    obj['payment'] = payment;
-    obj['principal'] = principal;
-    obj['interest'] = interest;
-    obj['totalInterest'] = totalInterest;
-    obj['balance'] = balance;
+    dataRow.getElementById('month').textContent = paymentArray[i].month;
+    dataRow.getElementById('payment').textContent = paymentArray[
+      i
+    ].payment.toLocaleString('en-US', {
+      style: 'decimal',
+      minimumFractionDigits: '2',
+      maximumFractionDigits: '2',
+    });
+    dataRow.getElementById('principal').textContent = paymentArray[
+      i
+    ].principal.toLocaleString('en-US', {
+      style: 'decimal',
+      minimumFractionDigits: '2',
+      maximumFractionDigits: '2',
+    });
+    dataRow.getElementById('interest').textContent = paymentArray[
+      i
+    ].interest.toLocaleString('en-US', {
+      style: 'decimal',
+      minimumFractionDigits: '2',
+      maximumFractionDigits: '2',
+    });
+    dataRow.getElementById('totalInterest').textContent = paymentArray[
+      i
+    ].totalInterest.toLocaleString('en-US', {
+      style: 'decimal',
+      minimumFractionDigits: '2',
+      maximumFractionDigits: '2',
+    });
+    dataRow.getElementById('balance').textContent = paymentArray[
+      i
+    ].balance.toLocaleString('en-US', {
+      style: 'decimal',
+      minimumFractionDigits: '2',
+      maximumFractionDigits: '2',
+    });
 
-    paymentArray.push(obj);
-  }                          
+    resultsBody.appendChild(dataRow);
+  }
+}
 </code></pre>
                         <!-- End Code -->
                       </div>
