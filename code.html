@@ -123,7 +123,7 @@
 
                 <!-- Collapsible Sections -->
                 <div class="accordion" id="accordionMortgageCalculator">
-                  <!-- Build Payment Schedul -->
+                  <!-- Build Payment Schedule -->
                   <div class="card">
                     <div class="card-header" id="headingOne">
                       <h2 class="mb-0">
@@ -188,82 +188,6 @@ function buildPaymentSchedule() {
 }
 </code></pre>
                         <!-- End Code -->
-
-                        <!-- <h5 class="mt-3">Get Events</h5>
-                        <p class="mb-3">Description here</p>
-                        <p>
-                          <span class="badge badge-info">Line 8</span> Using the
-                          array method "filter" a copy is made of the base data
-                          for the purpose of creating statistics for the
-                          selected city.
-                        </p> -->
-
-                        <!-- Start Code -->
-                        <!-- <pre
-                          class="line-numbers"
-                        ><code class="language-javascript">// Get the events for the selected city
-function getEvents(e) {
-  let city = e.getAttribute('data-string');
-  let curEvents = JSON.parse(localStorage.getItem('eventArray')) || eventArray;
-  filteredEvents = curEvents;
-  document.getElementById('statsHeader').innerHTML = `Stats for ${city} Events`;
-
-  if (city !== 'All') {
-    filteredEvents = curEvents.filter(function (event) {
-      if (event.city == city) {
-        return event;
-      }
-    });
-  }
-  displayStats();
-}
-</code></pre> -->
-                        <!-- End Code -->
-                        <!-- <h5 class="mt-3">Display Stats</h5>
-                        <p class="mb-3">
-                          The filtered data is used to create event statistics
-                          that are then inserted into the HTML.
-                        </p> -->
-
-                        <!-- Start Code -->
-                        <!-- <pre
-                          class="line-numbers"
-                        ><code class="language-javascript">// Display statistics based on city selection
-function displayStats() {
-  let total = 0;
-  let average = 0;
-  let most = 0;
-  let least = -1;
-  let currentAttendance = 0;
-
-  for (let i = 0; i < filteredEvents.length; i++) {
-    currentAttendance = filteredEvents[i].attendance;
-    total += currentAttendance;
-
-    if (most < currentAttendance) {
-      most = currentAttendance;
-    }
-
-    if (least > currentAttendance || least < 0) {
-      least = currentAttendance;
-    }
-  }
-
-  average = total / filteredEvents.length;
-
-  document.getElementById('total').innerHTML = total.toLocaleString();
-  document.getElementById('most').innerHTML = most.toLocaleString();
-  document.getElementById('least').innerHTML = least.toLocaleString();
-  document.getElementById('average').innerHTML = average.toLocaleString(
-    undefined,
-    {
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }
-  );
-}
-</code></pre> -->
-                        <!-- End Code -->
                       </div>
                     </div>
                   </div>
@@ -276,67 +200,37 @@ function displayStats() {
                           class="btn btn-link collapsed"
                           type="button"
                           data-toggle="collapse"
-                          data-target="#collapseEventData"
+                          data-target="#collapseCalculatePayment"
                           aria-expanded="false"
-                          aria-controls="collapseEventData"
+                          aria-controls="collapseCalculatePayment"
                         >
-                          Event Data
+                          Calculate Payment
                         </button>
                       </h2>
                     </div>
                     <div
-                      id="collapseEventData"
+                      id="collapseCalculatePayment"
                       class="collapse"
                       aria-labelledby="headingTwo"
                       data-parent="#accordionMortgageCalculator"
                     >
                       <div class="card-body">
-                        <h5>Get Data</h5>
-                        <p class="mb-3">
-                          Similar to Event Statistics, data is pulled from local
-                          storage (or the base array).
-                        </p>
+                        <h5>Calculate Payment</h5>
 
-                        <h5>Display Data</h5>
                         <p class="mb-3">
-                          Templates are used to pull the data and dynamically
-                          populate the HTML. This technique is particularly
-                          powerful as it keeps the HTML out of the Javascript.
-                        </p>
-                        <p>
-                          <span class="badge badge-info">Lines 3 and 4</span>
-                          Identifies the template and the code destination.
-                        </p>
-                        <p>
-                          <span class="badge badge-info">Line 9</span> In the
-                          for loop a copy of the template is populated with data
-                          then appended to the target destination.
+                          Standard mortgage payment calculation sourced from
+                          Oreilly.com
                         </p>
 
                         <!-- Start Code -->
                         <pre
                           class="line-numbers"
-                        ><code class="language-javascript">// Display event data
-function displayData(events) {
-  const myTemplate = document.getElementById('Data-Template');
-  const resultsBody = document.getElementById('resultsBody');
+                        ><code class="language-javascript">// Calculate Payment
+function calculatePayment(loan, months, mthRate) {
+  let x = Math.pow(1 + mthRate, months);
+  return (loan * x * mthRate) / (x - 1);
 
-  // clear table first
-  resultsBody.innerHTML = '';
-
-  for (let i = 0; i < events.length; i++) {
-    const dataRow = document.importNode(myTemplate.content, true);
-
-    dataRow.getElementById('event').textContent = events[i].event;
-    dataRow.getElementById('city').textContent = events[i].city;
-    dataRow.getElementById('state').textContent = events[i].state;
-    dataRow.getElementById('attendance').textContent = events[
-      i
-    ].attendance.toLocaleString();
-    dataRow.getElementById('date').textContent = events[i].date;
-
-    resultsBody.appendChild(dataRow);
-  }
+  // Source: https://www.oreilly.com/library/view/javascript-the-definitive/0596000480/ch01s08.html
 }
 </code></pre>
                         <!-- End Code -->
