@@ -3,7 +3,7 @@ function buildPaymentSchedule() {
   if (!isValid) {
     // Add a sweet alert ... https://sweetalert2.github.io/
     Swal.fire(
-      'Error',
+      'Oops...',
       'Please enter a value greater than zero in all fields',
       'error'
     );
