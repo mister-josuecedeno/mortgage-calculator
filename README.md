@@ -1,6 +1,6 @@
 # Coding Challenge - Mortgage Calculator
 
-![mortgage-calculator-logo](https://user-images.githubusercontent.com/47830532/115272667-484ed880-a104-11eb-93c8-afe571f7b00e.png)
+![mortgage-calculator](https://user-images.githubusercontent.com/47830532/115284958-efd30780-a112-11eb-936e-91941d70e636.png)
 
 ---
 
