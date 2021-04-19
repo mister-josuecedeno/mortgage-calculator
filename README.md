@@ -3,7 +3,7 @@
 [Live Demo](https://josuecedeno-mortgage-calculator.netlify.app/) |
 [Portfolio](https://josuecedeno.netlify.app/)
 
-![mortgage-calculator](https://user-images.githubusercontent.com/47830532/115284958-efd30780-a112-11eb-936e-91941d70e636.png)
+![mortgage-calculator](https://user-images.githubusercontent.com/47830532/115305789-79430380-a12c-11eb-80c1-91bd17d9385f.png)
 
 ---
 
