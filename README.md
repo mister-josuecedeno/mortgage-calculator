@@ -2,11 +2,11 @@
 
 ![mortgage-calculator-logo](https://user-images.githubusercontent.com/47830532/115272667-484ed880-a104-11eb-93c8-afe571f7b00e.png)
 
+---
+
 [Live Demo](https://josuecedeno-mortgage-calculator.netlify.app/)
 
 ## Objective
-
----
 
 Write a mortgage loan calculator application that takes in three parameters:
 
@@ -15,8 +15,6 @@ Write a mortgage loan calculator application that takes in three parameters:
 3. The percentage rate at which interest will accrue on the loan (rate)
 
 ## Instructions
-
----
 
 The output should include the following:
 
