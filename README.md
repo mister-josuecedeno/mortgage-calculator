@@ -1,10 +1,11 @@
 # Coding Challenge - Mortgage Calculator
 
+[Live Demo](https://josuecedeno-mortgage-calculator.netlify.app/) |
+[Portfolio](https://josuecedeno.netlify.app/)
+
 ![mortgage-calculator](https://user-images.githubusercontent.com/47830532/115284958-efd30780-a112-11eb-936e-91941d70e636.png)
 
 ---
-
-[Live Demo](https://josuecedeno-mortgage-calculator.netlify.app/)
 
 ## Objective
 
