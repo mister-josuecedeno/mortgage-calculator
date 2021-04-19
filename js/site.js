@@ -39,7 +39,7 @@ function getPayments(loan, payment, months, mthRate) {
     obj['principal'] = principal;
     obj['interest'] = interest;
     obj['totalInterest'] = totalInterest;
-    obj['balance'] = balance;
+    obj['balance'] = Math.abs(balance); // Fix negative value
 
     paymentArray.push(obj);
   }
