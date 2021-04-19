@@ -1,4 +1,15 @@
 function buildPaymentSchedule() {
+  let isValid = validateForm();
+  if (!isValid) {
+    // Add a sweet alert ... https://sweetalert2.github.io/
+    Swal.fire(
+      'Error',
+      'Please enter a value greater than zero in all fields',
+      'error'
+    );
+    return false;
+  }
+
   let loan = +document.getElementById('loanAmount').value;
   let months = +document.getElementById('loanTerm').value * 12;
   let mthRate = (+document.getElementById('loanRate').value * 0.01) / 12;
@@ -130,4 +141,15 @@ function displayData(paymentArray) {
 
     resultsBody.appendChild(dataRow);
   }
+}
+
+// Form Validation - Is every field a number greater than 0?
+function validateForm() {
+  let amount = +document.getElementById('loanAmount').value;
+  let term = +document.getElementById('loanTerm').value;
+  let rate = +document.getElementById('loanRate').value;
+
+  let isValid = [amount, term, rate].every((field) => field > 0);
+
+  return isValid;
 }
